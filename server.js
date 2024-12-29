@@ -63,7 +63,6 @@ for (const file of eventFiles) {
 client
     .on(Events.InteractionCreate, async (interaction) => {
         if (interaction.isChatInputCommand()) {
-            console.log(`Received interaction: ${interaction.commandName}`)
             const command = client.commands.get(interaction.commandName)
             if (!command) return
             try {
