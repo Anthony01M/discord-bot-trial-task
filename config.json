@@ -1,0 +1,35 @@
+{
+    "VARIABLES": {
+        "LOG_LEVEL": "info",
+        "BOT_TOKEN": "",
+        "DATABASE": {
+            "type": "sqlite",
+            "mysql": {
+                "host": "localhost",
+                "port": 3306,
+                "database": "database",
+                "name": "root",
+                "password": "password"
+            },
+            "sqlite": {
+                "path": "database.sqlite"
+            }
+        }
+    },
+    "MESSAGES": {
+        "ECHO": {
+            "type": "text",
+            "EMBED": {
+                "color": "random",
+                "title": "Echo Command",
+                "fields": [
+                    { "name": "Original Message", "value": "{original}" },
+                    { "name": "Reversed Message", "value": "{reversed}" }
+                ]
+            },
+            "TEXT": {
+                "content": "Original Message: {original}\nReversed Message: {reversed}"
+            }
+        }
+    }
+}
