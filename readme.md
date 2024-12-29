@@ -33,7 +33,7 @@ This project is an advanced Discord bot designed to handle comprehensive slash c
 4. Edit `config.json` file in the root directory with your bot token and database credentials.
 5. Start the bot:
     ```sh
-    pnpm start
+    node server.js
     ```
 
 ## Usage
