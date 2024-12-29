@@ -30,10 +30,10 @@ This project is an advanced Discord bot designed to handle comprehensive slash c
     ```sh
     pnpm install
     ```
-4. Edit `config.json` file in the root directory with your bot token and database credentials:
+4. Edit `config.json` file in the root directory with your bot token and database credentials.
 5. Start the bot:
     ```sh
-    node server.js
+    pnpm start
     ```
 
 ## Usage
