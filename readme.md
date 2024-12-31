@@ -50,6 +50,10 @@ This project is an advanced Discord bot designed to handle comprehensive slash c
 - Use `/assignrole [@user] [role] (messages) (since)` to assign a role based on criteria (amount of messages and/or since X seconds/minutes/hours/days/etcetera).
 - Use `/removerole [@user] [role] (reason) (duration)` to remove a role with optional reason and temporary removal.
 
+### Note
+- [] - Required argument
+- () - Optional argument 
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
