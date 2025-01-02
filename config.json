@@ -1,183 +1,331 @@
 {
-    "VARIABLES": {
-        "LOG_LEVEL": "info",
-        "BOT_TOKEN": "",
-        "DATABASE": {
-            "type": "sqlite",
-            "mysql": {
-                "host": "localhost",
-                "port": 3306,
-                "database": "database",
-                "name": "root",
-                "password": "password"
-            },
-            "sqlite": {
-                "path": "database.sqlite"
-            }
-        }
-    },
-    "MESSAGES": {
-        "ECHO": {
-            "type": "text",
-            "EMBED": {
-                "color": "random",
-                "title": "Echo Command",
-                "fields": [
-                    { "name": "Original Message", "value": "{original}" },
-                    { "name": "Reversed Message", "value": "{reversed}" }
-                ]
-            },
-            "TEXT": {
-                "content": "Original Message: {original}\nReversed Message: {reversed}"
-            }
-        },
-        "ASSIGNROLE": {
-            "type": "text",
-            "EMBED": {
-                "enabled": true,
-                "color": "random",
-                "title": "Assign Role",
-                "fields": [
-                    { "name": "Role Assigned", "value": "{role}" },
-                    { "name": "User", "value": "{user}" }
-                ]
-            },
-            "TEXT": {
-                "content": "Role Assigned: {role}\nUser: {user}"
-            }
-        },
-        "REMOVEROLE": {
-            "type": "text",
-            "EMBED": {
-                "enabled": true,
-                "color": "random",
-                "title": "Remove Role",
-                "fields": [
-                    { "name": "Role Removed", "value": "{role}" },
-                    { "name": "User", "value": "{user}" }
-                ]
-            },
-            "TEXT": {
-                "content": "Role Removed: {role}\nUser: {user}"
-            }
-        },
-        "RESTOREROLE": {
-            "type": "text",
-            "EMBED": {
-                "enabled": true,
-                "color": "random",
-                "title": "Restore Role",
-                "fields": [
-                    { "name": "Role Restored", "value": "{role}" },
-                    { "name": "User", "value": "{user}" }
-                ]
-            },
-            "TEXT": {
-                "content": "Role Restored: {role}\nUser: {user}"
-            }
-        },
-        "SETWELCOME": {
-            "type": "text",
-            "EMBED": {
-                "enabled": true,
-                "color": "random",
-                "title": "Set Welcome Message",
-                "fields": [
-                    { "name": "Message", "value": "{message}" }
-                ]
-            },
-            "TEXT": {
-                "content": "Welcome message set to: {message}"
-            }
-        }
-    },
-    "ERRORS": {
-        "USER_NOT_FOUND": {
-            "type": "text",
-            "EMBED": {
-                "enabled": true,
-                "color": "random",
-                "title": "User Not Found",
-                "fields": [
-                    { "name": "User", "value": "{user}" }
-                ]
-            },
-            "TEXT": {
-                "content": "User not found: {user}"
-            }
-        },
-        "ROLE_NOT_FOUND": {
-            "type": "text",
-            "EMBED": {
-                "enabled": true,
-                "color": "random",
-                "title": "Role Not Found",
-                "fields": [
-                    { "name": "Role", "value": "{role}" }
-                ]
-            },
-            "TEXT": {
-                "content": "Role not found: {role}"
-            }
-        },
-        "USER_ALREADY_HAS_ROLE": {
+	"VARIABLES": {
+		"LOG_LEVEL": "info",
+		"BOT_TOKEN": "",
+		"DATABASE": {
+			"type": "sqlite",
+			"mysql": {
+				"host": "localhost",
+				"port": 3306,
+				"database": "database",
+				"name": "root",
+				"password": "password"
+			},
+			"sqlite": {
+				"path": "database.sql"
+			}
+		}
+	},
+	"MESSAGES": {
+		"ECHO": {
+			"type": "embed",
+			"EMBED": {
+				"color": "random",
+				"title": "Echo Command",
+				"fields": [
+					{ "name": "Original Message", "value": "{original}" },
+					{ "name": "Reversed Message", "value": "{reversed}" }
+				]
+			},
+			"TEXT": {
+				"content": "Original Message: {original}\nReversed Message: {reversed}"
+			}
+		},
+		"ASSIGNROLE": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Assign Role",
+				"fields": [
+					{ "name": "Role Assigned", "value": "{role}" },
+					{ "name": "User", "value": "{user}" }
+				]
+			},
+			"TEXT": {
+				"content": "Role Assigned: {role}\nUser: {user}"
+			}
+		},
+		"REMOVEROLE": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Remove Role",
+				"fields": [
+					{ "name": "Role Removed", "value": "{role}" },
+					{ "name": "User", "value": "{user}" }
+				]
+			},
+			"TEXT": {
+				"content": "Role Removed: {role}\nUser: {user}"
+			}
+		},
+		"RESTOREROLE": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Restore Role",
+				"fields": [
+					{ "name": "Role Restored", "value": "{role}" },
+					{ "name": "User", "value": "{user}" }
+				]
+			},
+			"TEXT": {
+				"content": "Role Restored: {role}\nUser: {user}"
+			}
+		},
+		"SETWELCOME": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Set Welcome Message",
+				"fields": [
+					{ "name": "Message", "value": "{message}" }
+				]
+			},
+			"TEXT": {
+				"content": "Welcome message set to: {message}"
+			}
+		},
+		"LEADERBOARD": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Leaderboard",
+				"fields": [
+					{ "name": "Top Points Users", "value": "{topPointsLeaderboard}" },
+                    { "name": "Top Level Users", "value": "{topLevelLeaderboard}" }
+				]
+			},
+			"TEXT": {
+				"content": "**Leaderboard:**\n{leaderboard}"
+			}
+		},
+		"GET_XP": {
             "type": "text",
             "EMBED": {
                 "enabled": true,
                 "color": "random",
-                "title": "User Already Has Role",
+                "title": "User XP",
                 "fields": [
                     { "name": "User", "value": "{user}" },
-                    { "name": "Role", "value": "{role}" }
+                    { "name": "XP", "value": "{xp}" }
                 ]
             },
             "TEXT": {
-                "content": "User already has role: {role}"
+                "content": "{user} has {xp} XP."
             }
         },
-        "USER_DOES_NOT_HAVE_ROLE": {
+        "ADD_XP": {
             "type": "text",
             "EMBED": {
                 "enabled": true,
                 "color": "random",
-                "title": "User Does Not Have Role",
+                "title": "XP Added",
                 "fields": [
                     { "name": "User", "value": "{user}" },
-                    { "name": "Role", "value": "{role}" }
+                    { "name": "XP", "value": "{xp}" }
                 ]
             },
             "TEXT": {
-                "content": "User does not have role: {role}"
+                "content": "Added {xp} XP to {user}."
             }
         },
-        "INVALID_DURATION": {
+        "GET_POINTS": {
             "type": "text",
             "EMBED": {
                 "enabled": true,
                 "color": "random",
-                "title": "Invalid Duration",
-                "fields": [
-                    { "name": "Duration", "value": "{duration}" }
-                ]
-            },
-            "TEXT": {
-                "content": "Invalid duration: {duration}"
-            }
-        },
-        "USER_NOT_ENOUGH_MESSAGES": {
-            "type": "text",
-            "EMBED": {
-                "enabled": true,
-                "color": "random",
-                "title": "User Not Enough Messages",
+                "title": "User Points",
                 "fields": [
                     { "name": "User", "value": "{user}" },
-                    { "name": "Messages", "value": "{messages}" }
+                    { "name": "Points", "value": "{points}" }
                 ]
             },
             "TEXT": {
-                "content": "User does not have enough messages: {messages}"
+                "content": "{user} has {points} points."
+            }
+        },
+        "ADD_POINTS": {
+            "type": "text",
+            "EMBED": {
+                "enabled": true,
+                "color": "random",
+                "title": "Points Added",
+                "fields": [
+                    { "name": "User", "value": "{user}" },
+                    { "name": "Points", "value": "{points}" }
+                ]
+            },
+            "TEXT": {
+                "content": "Added {points} points to {user}."
             }
         }
-    }
+	},
+	"ERRORS": {
+		"USER_NOT_FOUND": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "User Not Found",
+				"fields": [
+					{ "name": "User", "value": "{user}" }
+				]
+			},
+			"TEXT": {
+				"content": "User not found: {user}"
+			}
+		},
+		"ROLE_NOT_FOUND": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Role Not Found",
+				"fields": [
+					{ "name": "Role", "value": "{role}" }
+				]
+			},
+			"TEXT": {
+				"content": "Role not found: {role}"
+			}
+		},
+		"USER_ALREADY_HAS_ROLE": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "User Already Has Role",
+				"fields": [
+					{ "name": "User", "value": "{user}" },
+					{ "name": "Role", "value": "{role}" }
+				]
+			},
+			"TEXT": {
+				"content": "User already has role: {role}"
+			}
+		},
+		"USER_DOES_NOT_HAVE_ROLE": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "User Does Not Have Role",
+				"fields": [
+					{ "name": "User", "value": "{user}" },
+					{ "name": "Role", "value": "{role}" }
+				]
+			},
+			"TEXT": {
+				"content": "User does not have role: {role}"
+			}
+		},
+		"INVALID_DURATION": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Invalid Duration",
+				"fields": [
+					{ "name": "Duration", "value": "{duration}" }
+				]
+			},
+			"TEXT": {
+				"content": "Invalid duration: {duration}"
+			}
+		},
+		"USER_NOT_ENOUGH_MESSAGES": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "User Not Enough Messages",
+				"fields": [
+					{ "name": "User", "value": "{user}" },
+					{ "name": "Messages", "value": "{messages}" }
+				]
+			},
+			"TEXT": {
+				"content": "User does not have enough messages: {messages}"
+			}
+		},
+		"ERROR_GETTING_LEADERBOARD": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Error Getting Leaderboard",
+				"fields": []
+			},
+			"TEXT": {
+				"content": "There was an error getting the leaderboard."
+			}
+		},
+		"EMPTY_LEADERBOARD": {
+			"type": "embed",
+			"EMBED": {
+				"enabled": true,
+				"color": "random",
+				"title": "Empty Leaderboard",
+				"description": "There is no one on the leaderboard.",
+				"fields": []
+			},
+			"TEXT": {
+				"content": "There is no one on the leaderboard."
+			}
+		},
+		"ERROR_GETTING_XP": {
+            "type": "embed",
+            "EMBED": {
+                "enabled": true,
+                "color": "random",
+                "title": "Error Getting XP",
+                "fields": []
+            },
+            "TEXT": {
+                "content": "There was an error getting XP."
+            }
+        },
+        "ERROR_ADDING_XP": {
+            "type": "embed",
+            "EMBED": {
+                "enabled": true,
+                "color": "random",
+                "title": "Error Adding XP",
+                "fields": []
+            },
+            "TEXT": {
+                "content": "There was an error adding XP."
+            }
+        },
+        "ERROR_GETTING_POINTS": {
+            "type": "embed",
+            "EMBED": {
+                "enabled": true,
+                "color": "random",
+                "title": "Error Getting Points",
+                "fields": []
+            },
+            "TEXT": {
+                "content": "There was an error getting points."
+            }
+        },
+        "ERROR_ADDING_POINTS": {
+            "type": "embed",
+            "EMBED": {
+                "enabled": true,
+                "color": "random",
+                "title": "Error Adding Points",
+                "fields": []
+            },
+            "TEXT": {
+                "content": "There was an error adding points."
+            }
+        }
+	}
 }
