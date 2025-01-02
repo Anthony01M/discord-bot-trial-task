@@ -36,23 +36,23 @@ module.exports = {
 		if (!member) {
 			const messageHelper = new MessageHelper('USER_NOT_FOUND'),
 				response = messageHelper.build({ user: user.username })
-			return interaction.reply({ ...response, ephemeral: true })
+			return await interaction.reply({ ...response, ephemeral: true })
 		}
 		if (!member.roles.cache.has(role.id)) {
 			const messageHelper = new MessageHelper('USER_DOES_NOT_HAVE_ROLE'),
 				response = messageHelper.build({ user: user.username, role: role.name })
-			return interaction.reply({ ...response, ephemeral: true })
+			return await interaction.reply({ ...response, ephemeral: true })
 		}
 		const botMember = await interaction.guild.members.fetch(interaction.client.user.id)
 		if (!botMember.permissions.has(PermissionsBitField.Flags.ManageRoles)) {
 			const messageHelper = new MessageHelper('NO_PERMISSION'),
 				response = messageHelper.build({})
-			return interaction.editReply({ ...response, ephemeral: true })
+			return await interaction.editReply({ ...response, ephemeral: true })
 		}
 		if (duration && !time.parse(duration)) {
 			const messageHelper = new MessageHelper('INVALID_DURATION'),
 				response = messageHelper.build({ duration })
-			return interaction.reply({ ...response, ephemeral: true })
+			return await interaction.reply({ ...response, ephemeral: true })
 		}
 		try {
 			await member.roles.remove(role, reason)
@@ -70,7 +70,7 @@ module.exports = {
 							role: role.name,
 							user: user.username
 						})
-					await interaction.followUp(restoreResponse)
+					return await interaction.followUp(restoreResponse)
 				}, time.parse(duration))
 			}
 		} catch (error) {
@@ -79,7 +79,7 @@ module.exports = {
 				.error()
 			const messageHelper = new MessageHelper('ERROR_REMOVING_ROLE'),
 				response = messageHelper.build({})
-			await interaction.reply({ ...response, ephemeral: true })
+			return await interaction.reply({ ...response, ephemeral: true })
 		}
 	}
 }

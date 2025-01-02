@@ -2,7 +2,7 @@ const { SlashCommandBuilder, PermissionsBitField } = require('discord.js')
 const { time } = require('@rjweb/utils')
 
 const MessageHelper = require('../helper/messageHelper')
-const logHelper = require('../helper/logHelper')()
+const logHelper = require('../helper/logHelper')
 
 module.exports = {
 	data: new SlashCommandBuilder()
