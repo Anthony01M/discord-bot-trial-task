@@ -4,6 +4,8 @@ const fs = require("fs")
 
 const logHelper = require('./helper/logHelper')
 const db = require('./helper/databaseHelper')
+const { flushCacheToDatabase } = require("./helper/flushHelper")
+
 const config = require('./config')
 
 const startTime = performance.now()
@@ -158,3 +160,6 @@ client
 			.text(`Error logging in to Discord: ${error.message}`)
 			.error()
 	})
+
+// Since this is a simple bot, I won't be using cron scheduler or any other scheduler.
+setInterval(flushCacheToDatabase, 1 * 60 * 1000)
