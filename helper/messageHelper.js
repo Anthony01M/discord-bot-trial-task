@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require('discord.js')
+
 const config = require('../config')
 
 class MessageHelper {
@@ -29,13 +30,12 @@ class MessageHelper {
 		if (!messageConfig) throw new Error(`Message type ${this.messageType} not found in config`)
 		const messageType = (messageConfig.type || 'embed').toLowerCase()
 
-		this.setTitle(messageConfig.EMBED.title)
-		this.fields = messageConfig.EMBED.fields.map(field => ({
-			name: field.name,
-			value: field.value.replace(/{(\w+)}/g, (_, key) => data[key] || '')
-		}))
-
 		if (messageType === 'embed') {
+			this.setTitle(messageConfig.EMBED.title)
+			this.fields = messageConfig.EMBED.fields.map(field => ({
+				name: field.name,
+				value: field.value.replace(/{(\w+)}/g, (_, key) => data[key] || '')
+			}))
 			const embedMessage = this.createEmbedMessage(messageConfig.EMBED)
 			return { embeds: [embedMessage] }
 		} else {
