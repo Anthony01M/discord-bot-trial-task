@@ -1,6 +1,11 @@
 const cache = new Map()
 
 class CacheHelper {
+	async keys(pattern) {
+		const regex = new RegExp(`^${pattern.replace('*', '.*')}$`)
+		return Array.from(cache.keys()).filter(key => regex.test(key))
+	}
+
 	async get(key) {
 		return cache.get(key)
 	}
@@ -46,4 +51,4 @@ class CacheHelper {
 	}
 }
 
-export default new CacheHelper()
+module.exports = new CacheHelper()
